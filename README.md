@@ -14,13 +14,11 @@
 - **Hyperparameter Tuning**: Using cross-validation to fine-tune model parameters for better performance.
 - **Performance Evaluation**: Evaluating the models using Mean Absolute Error (MAE) and R² score.
 
-## File Structure
+## 📂 File Structure
 The repository contains the following files:
 - **Algerian_forest_fires_dataset.ipynb**: Data cleaning and exploratory data analysis (EDA) phase.
 - **Model_Training.ipynb**: Building and evaluating multiple regression models.
 - **images/**: Folder containing visualizations generated during the analysis (e.g., scatter plots, box plots, and heatmaps).
-
-## 📂 File Structure
 
 ```bash
 Algerian-Forest-Fires-Analysis/
