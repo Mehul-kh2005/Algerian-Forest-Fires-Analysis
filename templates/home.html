@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-top: 80px;
+            background: linear-gradient(to bottom right, #d0e7ff, #ffffff);
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 20px;
+            text-align: center;
+            color: #222;
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #b3d8ff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    FWI Prediction 🔥
+</header>
+
+<div class="container">
+    <form action="/predict_data" method="POST">
+        <label for="Temperature">Temperature:</label>
+        <input type="number" step="any" name="Temperature" required>
+
+        <label for="RH">Relative Humidity (RH):</label>
+        <input type="number" step="any" name="RH" required>
+
+        <label for="WS">Wind Speed (WS):</label>
+        <input type="number" step="any" name="WS" required>
+
+        <label for="Rain">Rain:</label>
+        <input type="number" step="any" name="Rain" required>
+
+        <label for="FFMC">FFMC:</label>
+        <input type="number" step="any" name="FFMC" required>
+
+        <label for="DMC">DMC:</label>
+        <input type="number" step="any" name="DMC" required>
+
+        <label for="ISI">ISI:</label>
+        <input type="number" step="any" name="ISI" required>
+
+        <label for="Classes">Classes (0 or 1):</label>
+        <input type="number" step="1" name="Classes" min="0" max="1" required>
+
+        <label for="Region">Region (0 or 1):</label>
+        <input type="number" step="1" name="Region" min="0" max="1" required>
+
+        <input type="submit" value="Predict FWI">
+    </form>
+
+    {% if results is not none %}
+        <div class="result">
+            🔍 <strong>Predicted FWI:</strong> {{results}}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    window.onload = function () {
+        window.scrollTo(0, 0);
+    };
+</script>
+
+</body>
+</html>
