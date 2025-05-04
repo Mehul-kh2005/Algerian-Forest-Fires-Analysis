@@ -7,17 +7,24 @@
 
 3. The dataset contains information about fire incidents across different regions of Algeria, with various features influencing fire behavior.
 
+4. A **Flask web application** has been developed for real-time prediction using the best-trained regression model.
+
 ### Key Features:
 - **Data Preprocessing**: Cleaning and feature engineering, including handling missing values, feature scaling, and encoding categorical variables.
 - **Exploratory Data Analysis (EDA)**: Visualizing the dataset to find patterns and correlations.
 - **Model Building**: Applying multiple regression techniques to predict the FWI.
 - **Hyperparameter Tuning**: Using cross-validation to fine-tune model parameters for better performance.
 - **Performance Evaluation**: Evaluating the models using Mean Absolute Error (MAE) and R² score.
+- **Flask Web App:** A lightweight web app using Flask for interactive FWI prediction based on user input.
+- **Model Deployment:** Model serialization using `pickle` for deployment in the Flask app.
 
 ## 📂 File Structure
 The repository contains the following files:
 - **Algerian_forest_fires_dataset.ipynb**: Data cleaning and exploratory data analysis (EDA) phase.
 - **Model_Training.ipynb**: Building and evaluating multiple regression models.
+- **application.py:** Main Flask app for serving the prediction web interface.
+- **templates/:** HTML templates for the web interface.
+- **models/:** Contains the saved trained model (Pickle file) used for deployment.
 - **images/**: Folder containing visualizations generated during the analysis (e.g., scatter plots, box plots, and heatmaps).
 
 ```bash
@@ -26,22 +33,29 @@ Algerian-Forest-Fires-Analysis/
 │   ├── Algerian_forest_fires_dataset.csv
 │   └── Algerian_forest_fires_cleaned_dataset.csv
 ├── notebooks/
-│   └── Algerian_forest_fires_dataset.ipynb
+│   ├── Algerian_forest_fires_dataset.ipynb
 │   └── Model_Training.ipynb
 ├── images/
-│   └── bejaia_monthly_fire_analysis.png
-│   └── elastic_net_actual_vs_predicted.png
-│   └── elastic_net_cv_actual_vs_predicted.png
-│   └── fwi_boxplot.png
-│   └── lasso_regression_actual_vs_predicted.png
-│   └── lassocv_regression_actual_vs_predicted.png
-│   └── linear_regression_actual_vs_predicted.png
-│   └── multicollinearity_heatmap.png
-│   └── ridge_cv_actual_vs_predicted.png
-│   └── ridge_regression_actual_vs_predicted.png
-│   └── numerical_features_histograms.png
-│   └── sidi_bel_abbes_monthly_fire_analysis.png
+│   ├── bejaia_monthly_fire_analysis.png
+│   ├── elastic_net_actual_vs_predicted.png
+│   ├── elastic_net_cv_actual_vs_predicted.png
+│   ├── fwi_boxplot.png
+│   ├── lasso_regression_actual_vs_predicted.png
+│   ├── lassocv_regression_actual_vs_predicted.png
+│   ├── linear_regression_actual_vs_predicted.png
+│   ├── multicollinearity_heatmap.png
+│   ├── ridge_cv_actual_vs_predicted.png
+│   ├── ridge_regression_actual_vs_predicted.png
+│   ├── numerical_features_histograms.png
+│   ├── sidi_bel_abbes_monthly_fire_analysis.png
 │   └── standard_scaler_effect_boxplots.png
+├── models/
+│   ├── ridge.pkl
+│   └── scaler.pkl
+├── templates/
+│   ├── home.html
+│   └── index.html
+├── application.py
 ├── README.md
 ├── requirements.txt
 └── .gitignore
@@ -54,6 +68,7 @@ The following Python libraries are required to run the notebooks:
 - matplotlib
 - seaborn
 - scikit-learn
+- flask
 
 You can install the required libraries using the following command:
 
@@ -102,6 +117,16 @@ For **ElasticNetCV** regression, the output is as follows:
 
 ### 3. Hyperparameter Tuning
 Hyperparameter tuning is done using cross-validation to improve the model's performance, particularly for Lasso, Ridge, and ElasticNet models.
+
+### 4. Model Deployment with Flask
+- The best-performing model is saved using the pickle module.
+- A simple web interface is built using Flask that allows users to input features and get real-time FWI predictions.
+- The interface is styled with basic HTML/CSS for usability.
+
+To run the web app locally:
+```bash
+python3 application.py
+```
 
 ## Visualizations Folder
 The **images/** folder contains the following visualizations:
